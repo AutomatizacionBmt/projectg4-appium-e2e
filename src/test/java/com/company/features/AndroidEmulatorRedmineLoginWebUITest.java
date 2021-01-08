@@ -26,7 +26,7 @@ public class AndroidEmulatorRedmineLoginWebUITest extends BaseTest {
         cap.setCapability("browserName","Chrome");
 
         //Para Windows
-        cap.setCapability("chromedriverExecutableDir","/Users/jhumbertoh/Proyectos/Publicos/projectg4-appium-e2e/resources/drivers/chrome/mac");
+        cap.setCapability("chromedriverExecutableDir","/Users/jhumbertoh/Proyectos/Publicos/projectg4-appium-e2e/resources/drivers/chrome/windows");
 
         //Para MAC
         //cap.setCapability("chromedriverExecutableDir","/Users/jhumbertoh/Proyectos/Publicos/projectg4-appium-e2e/resources/drivers/chrome/mac");
@@ -36,21 +36,18 @@ public class AndroidEmulatorRedmineLoginWebUITest extends BaseTest {
         driver.get(Urls.REDMINE_URL_LOCAL);
 
         RedmineLandingPage redmineLandingPage = new RedmineLandingPage(driver);
+        redmineLandingPage.clickOnMobileMenu();
 
         RedmineLoginPage redmineLoginPage = redmineLandingPage.clickLinkLogin();
+
         RedmineHomePage redmineHomePage = redmineLoginPage.login("user", "bitnami1");
 
-        String expectedUser = "Logged in as user";
-        String actualUser = redmineHomePage.getUserLogged();
+        redmineLandingPage.clickOnMobileMenu();
+
+        String expectedUser = "user";
+        String actualUser = redmineHomePage.getUserLoggedMobileEmulation();
+
 
         Assert.assertEquals("Login Fallido", expectedUser, actualUser);
-
-
-
-
-
-
     }
-
-
 }

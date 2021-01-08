@@ -11,6 +11,7 @@ public class RedmineHomePage extends RedmineLandingPage{
     private By menuHelp = By.xpath("//a[@href='https://www.redmine.org/guide']");
 
     private By lblUserLogged = By.id("loggedas");
+    private By menuMobileEmulationUserLogged = By.xpath("//*[@id='wrapper']/div[1]/div[2]/a");
 
     public RedmineHomePage(WebDriver driver) {
         super(driver);
@@ -18,6 +19,10 @@ public class RedmineHomePage extends RedmineLandingPage{
 
     public String getUserLogged(){
         return driver.findElement(lblUserLogged).getText();
+    }
+
+    public String getUserLoggedMobileEmulation(){
+        return driver.findElement(menuMobileEmulationUserLogged).getText();
     }
 
     public RedmineLandingPage clickOnMenu(String option){
