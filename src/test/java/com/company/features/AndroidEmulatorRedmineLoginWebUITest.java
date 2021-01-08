@@ -47,7 +47,6 @@ public class AndroidEmulatorRedmineLoginWebUITest extends BaseTest {
         String expectedUser = "user";
         String actualUser = redmineHomePage.getUserLoggedMobileEmulation();
 
-
         Assert.assertEquals("Login Fallido", expectedUser, actualUser);
     }
 }
