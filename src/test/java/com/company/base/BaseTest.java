@@ -6,6 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
@@ -16,6 +17,7 @@ public class BaseTest {
         try {
             driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"),
                     capabilities);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
