@@ -37,31 +37,19 @@ public class AndroidCalculatorPage {
 
         //120 ; Char[0] = 1; Char[1] = 2; Char[2] = 0;
         //Ingresar operador 1
-        for (Character digit : operator1.toCharArray()) {
-            if (digit.equals('0')) {
-                driver.findElement(btnZero).click();
-            } else if (digit.equals('1')) {
-                driver.findElement(btnOne).click();
-            } else if (digit.equals('2')) {
-                driver.findElement(btnTwo).click();
-            } else if (digit.equals('3')) {
-                driver.findElement(btnThree).click();
-            } else if (digit.equals('4')) {
-                driver.findElement(btnFour).click();
-            } else if (digit.equals('5')) {
-                driver.findElement(btnFive).click();
-            } else if (digit.equals('6')) {
-                driver.findElement(btnSix).click();
-            } else if (digit.equals('7')) {
-                driver.findElement(btnSeven).click();
-            } else if (digit.equals('8')) {
-                driver.findElement(btnEight).click();
-            } else if (digit.equals('9')) {
-                driver.findElement(btnNine).click();
-            }
-        }
+        clickOnCalcNumber(operator1);
 
         //Ingresar la operacion
+        clickOnOperation(operation);
+
+        //Ingresar el operador 2
+        clickOnCalcNumber(operator2);
+
+        driver.findElement(btnEqu).click();
+    }
+
+    private void clickOnOperation(String operation) {
+
         switch (operation.toUpperCase()) {
             case "PLUS":
                 driver.findElement(btnAdd).click();
@@ -78,34 +66,36 @@ public class AndroidCalculatorPage {
             default:
                 throw new IllegalStateException("The option " + operation.toUpperCase() + " is not present");
         }
+    }
 
-        //Ingresar el operador 2
-        for (Character digit : operator2.toCharArray()) {
-            if (digit.equals('0')) {
-                driver.findElement(btnZero).click();
-            } else if (digit.equals('1')) {
-                driver.findElement(btnOne).click();
-            } else if (digit.equals('2')) {
-                driver.findElement(btnTwo).click();
-            } else if (digit.equals('3')) {
-                driver.findElement(btnThree).click();
-            } else if (digit.equals('4')) {
-                driver.findElement(btnFour).click();
-            } else if (digit.equals('5')) {
-                driver.findElement(btnFive).click();
-            } else if (digit.equals('6')) {
-                driver.findElement(btnSix).click();
-            } else if (digit.equals('7')) {
-                driver.findElement(btnSeven).click();
-            } else if (digit.equals('8')) {
-                driver.findElement(btnEight).click();
-            } else if (digit.equals('9')) {
-                driver.findElement(btnNine).click();
-            }
+    private void clickOnCalcNumber(String number) {
+        for (Character digit : number.toCharArray()) {
+            clickNumber(digit);
         }
+    }
 
-        driver.findElement(btnEqu).click();
-
+    private void clickNumber(Character digit) {
+        if (digit.equals('0')) {
+            driver.findElement(btnZero).click();
+        } else if (digit.equals('1')) {
+            driver.findElement(btnOne).click();
+        } else if (digit.equals('2')) {
+            driver.findElement(btnTwo).click();
+        } else if (digit.equals('3')) {
+            driver.findElement(btnThree).click();
+        } else if (digit.equals('4')) {
+            driver.findElement(btnFour).click();
+        } else if (digit.equals('5')) {
+            driver.findElement(btnFive).click();
+        } else if (digit.equals('6')) {
+            driver.findElement(btnSix).click();
+        } else if (digit.equals('7')) {
+            driver.findElement(btnSeven).click();
+        } else if (digit.equals('8')) {
+            driver.findElement(btnEight).click();
+        } else if (digit.equals('9')) {
+            driver.findElement(btnNine).click();
+        }
     }
 
     public String getResult(){
