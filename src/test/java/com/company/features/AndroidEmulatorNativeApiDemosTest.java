@@ -98,4 +98,29 @@ public class AndroidEmulatorNativeApiDemosTest extends BaseTest {
                 .withDuration(Duration.ofSeconds(2)))
                 .moveTo(element(second)).release().perform();
     }
+
+    @Test
+    public void testScrollingDemoNexusAndroid7() {
+
+        DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+        cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
+        cap.setCapability("platformVersion", "7.0");
+        cap.setCapability("deviceName", "Nexus5Android7");
+        cap.setCapability("avd", "Nexus5Android7");
+        cap.setCapability("avdArgs", "-port 5557");
+        cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "200");
+
+        cap.setCapability(MobileCapabilityType.APP, "/Users/jhumbertoh/Proyectos/Publicos/projectg4-appium-e2e/resources/apk/ApiDemos-debug.apk");
+
+
+        configAppiumDriver(cap);
+
+        driver.findElementByXPath("//android.widget.TextView[@content-desc='Views']").click();
+
+
+        AndroidDriver driverAndroid = (AndroidDriver) driver;
+        driverAndroid.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"));");
+
+    }
 }
