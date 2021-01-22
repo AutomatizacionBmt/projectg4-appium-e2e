@@ -147,7 +147,10 @@ public class AndroidEmulatorNativeApiDemosTest extends BaseTest {
         WebElement destination = (WebElement) driver.findElementsByClassName("android.view.View").get(1);
 
         TouchAction touch = new TouchAction(driver);
-        touch.longPress(element(source)).moveTo(element(destination)).release().perform();
+        touch.longPress(element(source))
+                .moveTo(element(destination))
+                .release()
+                .perform();
 
 
     }
